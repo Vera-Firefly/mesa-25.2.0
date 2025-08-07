@@ -43,6 +43,7 @@ jobs:
           cd libclc
           cmake -B build -G Ninja \
             -DLIBCLC_TARGETS="spirv64" \
+            -DLIBCLC_TARGETS_TO_BUILD="spir--;amdgcn--amdhsa" \
             -DLLVM_CONFIG=$(which llvm-config) \
             -DCMAKE_INSTALL_PREFIX=/usr/local
           ninja -C build
