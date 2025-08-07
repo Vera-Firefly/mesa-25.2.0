@@ -1,0 +1,14 @@
+[binaries]
+ndk = '${WORK_DIR}/${NDK_VER}' + '/toolchains/llvm/prebuilt/linux-x86_64/bin'
+ar = ndk + '/llvm-ar'
+c = ['ccache', ndk + '/armv7a-linux-androideabi${SDK_VER}-clang', '-O3', '-DVK_USE_PLATFORM_ANDROID_KHR', '-fPIC']
+cpp = ['ccache', ndk + '/armv7a-linux-androideabi${SDK_VER}-clang++', '-O3', '-DVK_USE_PLATFORM_ANDROID_KHR', '-fPIC', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++', '--end-no-unused-arguments', '-Wno-c++11-narrowing', '-Wno-array-bounds']
+c_ld = 'lld'
+cpp_ld = 'lld'
+strip = ndk + '/armv7a-linux-androideabi-strip'
+pkgconfig = ['env', 'PKG_CONFIG_LIBDIR=.:/tmp/drm-static/lib/pkgconfig', '/usr/bin/pkg-config']
+[host_machine]
+system = 'android'
+cpu_family = 'arm'
+cpu = 'armv7'
+endian = 'little'
