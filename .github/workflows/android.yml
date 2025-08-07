@@ -41,7 +41,10 @@ jobs:
       - name: Build
         run: |
           cd libclc
-          cmake -B build -G Ninja
+          cmake -B build -G Ninja \
+            -DLIBCLC_TARGETS="spirv64" \
+            -DLLVM_CONFIG=$(which llvm-config) \
+            -DCMAKE_INSTALL_PREFIX=/usr/local
           ninja -C build
           sudo ninja -C build install
           cd ..
