@@ -67,7 +67,7 @@ jobs:
             -Dandroid-stub=true \
             -Dandroid-libbacktrace=disabled \
             -Dandroid-strict=false \
-            -Dopengl-es2=enabled \
+            # -Dopengl-es2=enabled \
             -Degl=enabled \
             -Dgles1=enabled \
             -Dgles2=enabled \
