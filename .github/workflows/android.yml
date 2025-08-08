@@ -38,7 +38,7 @@ jobs:
           echo "Get Mesa Repository ..."
           git clone https://gitlab.freedesktop.org/mesa/drm.git
           echo "Get LLVM Project"
-          curl https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/LLVM-20.1.8-Linux-X64.tar.xz --output llvm.tar.xz
+          wget https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/LLVM-20.1.8-Linux-X64.tar.xz --output llvm.tar.xz
           tar -xJf llvm.tar.xz
 
       - name: Build
