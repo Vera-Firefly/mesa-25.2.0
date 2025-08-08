@@ -78,7 +78,7 @@ spirv2nir = executable(
   install : with_tools.contains('nir'),
 )
 
-if get_option('mesa-clc') != 'system' and (with_driver_using_cl or get_option('install-mesa-clc'))
+if get_option('mesa-clc') == 'aaa'
 
   idep_vtn_bindgen_deps = declare_dependency(
     include_directories: [inc_include, inc_src],
