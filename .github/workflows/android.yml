@@ -82,7 +82,6 @@ jobs:
             # -Dtools=drm-shim \
             -Dgallium-drivers=zink \
             # -Dfreedreno-kmds=kgsl,msm \
-            -Doptimization=3 \
             -Dbuildtype=release
           ninja -C "build-android" install
           # mkdir /tmp/mesa/output
