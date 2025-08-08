@@ -40,14 +40,16 @@ jobs:
 
       - name: Build
         run: |
-          envsubst <android-drm-${{matrix.arch}}>build-crossfile-drm
-          cd drm
+          cd libclc
           cmake -B build -G Ninja \
             -DLIBCLC_TARGETS="spirv64" \
             -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn--amdhsa;clspv--;clspv64--;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl;amdgcn-mesa-mesa3d" \
             -DLLVM_CONFIG=$(which llvm-config) \
             -DCMAKE_INSTALL_PREFIX=/usr/local
           ninja -C build
+          cd ..
+          envsubst <android-drm-${{matrix.arch}}>build-crossfile-drm
+          cd drm
           meson setup "build-android" \
             --prefix=/tmp/drm-static \
             --cross-file "../build-crossfile-drm" \
