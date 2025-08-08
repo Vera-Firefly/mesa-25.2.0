@@ -91,6 +91,7 @@ if get_option('mesa-clc') != 'system' and (with_driver_using_cl or \
      # machine to an x86 host
      native : not meson.can_run_host_binaries(),
      install : get_option('install-mesa-clc'),
+     native : true,
    )
 endif
 
