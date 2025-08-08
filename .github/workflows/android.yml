@@ -37,18 +37,12 @@ jobs:
           unzip ${NDK_VER}-linux.zip &> /dev/null
           echo "Get Mesa Repository ..."
           git clone https://gitlab.freedesktop.org/mesa/drm.git
+          echo "Get LLVM Project"
+          curl https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/clang+llvm-20.1.8-x86_64-pc-windows-msvc.tar.xz &> /dev/null
+          tar -xJf clang+llvm-20.1.8-x86_64-pc-windows-msvc.tar.xz &> /dev/null
 
       - name: Build
         run: |
-          cd libclc
-          cmake -B build -G Ninja \
-            -DLIBCLC_TARGETS="spirv64" \
-            -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn--amdhsa;clspv--;clspv64--;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl;amdgcn-mesa-mesa3d" \
-            -DLLVM_CONFIG=$(which llvm-config) \
-            -DCMAKE_INSTALL_PREFIX=/usr/local
-          ninja -C build
-          sudo ninja -C build install
-          cd ..
           envsubst <android-drm-${{matrix.arch}}>build-crossfile-drm
           cd drm
           meson setup "build-android" \
