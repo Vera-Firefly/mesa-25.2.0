@@ -20,7 +20,7 @@ jobs:
       - name: Set Up Environment
         run: |
           sudo apt update
-          sudo apt install -y cmake pkg-config libxrandr-dev libxxf86vm-dev libxcb-*-dev libx11-xcb-dev libxfixes-dev libdrm-dev libx11-dev glslang-tools
+          sudo apt install -y cmake llvm pkg-config libxrandr-dev libxxf86vm-dev libxcb-*-dev libx11-xcb-dev libxfixes-dev libdrm-dev libx11-dev glslang-tools
           pip3 install mako meson ninja
 
       - name: Set ndkver,sdkver and work_dir
@@ -37,14 +37,17 @@ jobs:
           unzip ${NDK_VER}-linux.zip &> /dev/null
           echo "Get Mesa Repository ..."
           git clone https://gitlab.freedesktop.org/mesa/drm.git
-          echo "Get LLVM Project"
-          wget https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/LLVM-20.1.8-Linux-X64.tar.xz --output llvm.tar.xz
-          tar -xJf llvm.tar.xz
 
       - name: Build
         run: |
           envsubst <android-drm-${{matrix.arch}}>build-crossfile-drm
           cd drm
+          cmake -B build -G Ninja \
+            -DLIBCLC_TARGETS="spirv64" \
+            -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn--amdhsa;clspv--;clspv64--;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl;amdgcn-mesa-mesa3d" \
+            -DLLVM_CONFIG=$(which llvm-config) \
+            -DCMAKE_INSTALL_PREFIX=/usr/local
+          ninja -C build
           meson setup "build-android" \
             --prefix=/tmp/drm-static \
             --cross-file "../build-crossfile-drm" \
