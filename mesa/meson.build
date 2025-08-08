@@ -824,7 +824,8 @@ with_llvm = with_llvm \
 
 dep_clc = null_dep
 if with_clc
-  dep_clc = dependency('libclc')
+  with_clc = false
+  # dep_clc = dependency('libclc')
 endif
 
 gl_pkgconfig_c_flags = []
