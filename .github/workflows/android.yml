@@ -67,11 +67,10 @@ jobs:
             -Dandroid-stub=true \
             -Dandroid-libbacktrace=disabled \
             -Dandroid-strict=false \
-            # -Dopengl-es2=enabled \
             -Degl=enabled \
-            -Dgles1=enabled \
-            -Dgles2=enabled \
-            -Dshared-glapi=enabled \
+            # -Dgles1=enabled \
+            # -Dgles2=enabled \
+            # -Dshared-glapi=enabled \
             -Dxlib-lease=disabled \
             -Dgbm=disabled \
             -Dglx=disabled \
