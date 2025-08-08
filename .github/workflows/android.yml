@@ -20,7 +20,7 @@ jobs:
       - name: Set Up Environment
         run: |
           sudo apt update
-          sudo apt install -y cmake pkg-config llvm libxrandr-dev libxxf86vm-dev libxcb-*-dev libx11-xcb-dev libxfixes-dev libdrm-dev libx11-dev glslang-tools
+          sudo apt install -y cmake pkg-config libxrandr-dev libxxf86vm-dev libxcb-*-dev libx11-xcb-dev libxfixes-dev libdrm-dev libx11-dev glslang-tools
           pip3 install mako meson ninja
 
       - name: Set ndkver,sdkver and work_dir
@@ -38,8 +38,8 @@ jobs:
           echo "Get Mesa Repository ..."
           git clone https://gitlab.freedesktop.org/mesa/drm.git
           echo "Get LLVM Project"
-          curl https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/clang+llvm-20.1.8-x86_64-pc-windows-msvc.tar.xz &> /dev/null
-          tar -xJf clang+llvm-20.1.8-x86_64-pc-windows-msvc.tar.xz &> /dev/null
+          curl https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/clang+llvm-20.1.8-x86_64-pc-windows-msvc.tar.xz --output llvm.tar.xz &> /dev/null
+          tar -xJf llvm.tar.xz &> /dev/null
 
       - name: Build
         run: |
