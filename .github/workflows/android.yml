@@ -68,8 +68,8 @@ jobs:
             -Dandroid-libbacktrace=disabled \
             -Dandroid-strict=false \
             -Degl=enabled \
-            # -Dgles1=enabled \
-            # -Dgles2=enabled \
+            -Dgles1=enabled \
+            -Dgles2=enabled \
             # -Dshared-glapi=enabled \
             -Dxlib-lease=disabled \
             -Dgbm=disabled \
