@@ -105,10 +105,10 @@ u_gralloc_cros_api_create()
 {
    struct cros_gralloc *gr = CALLOC_STRUCT(cros_gralloc);
    int err = 0;
-
+/*
    err = hw_get_module(GRALLOC_HARDWARE_MODULE_ID,
                        (const hw_module_t **)&gr->gralloc_module);
-
+*/
    if (err)
       goto fail;
 

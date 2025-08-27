@@ -78,10 +78,10 @@ u_gralloc_libdrm_create()
 {
    struct libdrm_gralloc *gr = CALLOC_STRUCT(libdrm_gralloc);
    int err = 0;
-
+/*
    err = hw_get_module(GRALLOC_HARDWARE_MODULE_ID,
                        (const hw_module_t **)&gr->gralloc_module);
-
+*/
    if (err)
       goto fail;
 
