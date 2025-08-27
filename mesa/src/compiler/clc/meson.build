@@ -132,7 +132,7 @@ if get_option('mesa-clc') != 'system'
     # If we can run host binaries directly, just build mesa_clc for the host.
     # Most commonly this happens when doing a cross compile from an x86_64 build
     # machine to an x86 host
-    native : true,
-    install : true,
+    native : false,
+    install : false,
   )
 endif
