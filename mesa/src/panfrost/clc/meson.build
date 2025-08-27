@@ -17,7 +17,7 @@ else
     # If we can run host binaries directly, just build panfrost_compile for the host.
     # Most commonly this happens when doing a cross compile from an x86_64 build
     # machine to an x86 host
-    native : not meson.can_run_host_binaries(),
-    install : get_option('install-precomp-compiler'),
+    native : false,
+    install : true,
   )
 endif
