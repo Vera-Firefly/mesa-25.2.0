@@ -6,6 +6,7 @@
  */
 
 #include "u_gralloc_internal.h"
+#include "u_gralloc_stub.h"
 
 #include <assert.h>
 #include <errno.h>

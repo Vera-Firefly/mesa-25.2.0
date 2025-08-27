@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "u_memory.h": "c",
+        "log.h": "c"
+    }
+}
