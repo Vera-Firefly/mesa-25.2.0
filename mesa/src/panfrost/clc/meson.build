@@ -6,6 +6,10 @@
 if get_option('precomp-compiler') == 'system'
   prog_panfrost_compile = find_program('panfrost_compile', native : true)
 else
+  prog_panfrost_compile = find_program('panfrost_compile', native : true)
+endif
+
+if get_option('precomp-compiler') == '0'
   prog_panfrost_compile = executable(
     'panfrost_compile',
     ['pan_compile.c'],
