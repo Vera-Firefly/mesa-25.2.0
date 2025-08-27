@@ -79,8 +79,7 @@ spirv2nir = executable(
   install : with_tools.contains('nir'),
 )
 
-if get_option('mesa-clc') != 'system' and (with_driver_using_cl or \
-                                           get_option('install-mesa-clc'))
+if get_option('mesa-clc') != 'system'
    prog_vtn_bindgen2 = executable(
      'vtn_bindgen2',
      ['vtn_bindgen2.c'],

@@ -121,8 +121,7 @@ idep_mesaclc = declare_dependency(
   link_args : _idep_mesaclc_link_args,
 )
 
-if get_option('mesa-clc') != 'system' and (with_driver_using_cl or \
-                                           get_option('install-mesa-clc'))
+if get_option('mesa-clc') != 'system'
   prog_mesa_clc = executable(
     'mesa_clc',
     ['mesa_clc.c'],
