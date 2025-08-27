@@ -18,6 +18,6 @@ else
     # Most commonly this happens when doing a cross compile from an x86_64 build
     # machine to an x86 host
     native : false,
-    install : true,
+    install : false,
   )
 endif
