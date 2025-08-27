@@ -5,6 +5,7 @@ c = ['ccache', ndk + '/aarch64-linux-android${SDK_VER}-clang', '-O3', '-DVK_USE_
 cpp = ['ccache', ndk + '/aarch64-linux-android${SDK_VER}-clang++', '-O3', '-DVK_USE_PLATFORM_ANDROID_KHR', '-fPIC', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++', '--end-no-unused-arguments', '-Wno-c++11-narrowing', '-Wno-array-bounds']
 c_ld = 'lld'
 cpp_ld = 'lld'
+exe_wrapper = ndk + '/qemu-aarch64-static'
 strip = ndk + '/aarch64-linux-android-strip'
 pkgconfig = ['env', 'PKG_CONFIG_LIBDIR=.:/tmp/drm-static/lib/pkgconfig', '/usr/bin/pkg-config']
 [host_machine]
@@ -12,3 +13,11 @@ system = 'android'
 cpu_family = 'aarch64'
 cpu = 'armv8'
 endian = 'little'
+
+[properties]
+sys_root = '${WORK_DIR}/${NDK_VER}' + '/toolchains/llvm/prebuilt/linux-x86_64/sysroot'
+needs_exe_wrapper = true
+
+[built-in options]
+c_args = ['-target', 'aarch64-linux-android${SDK_VER}', '--sysroot=' + '${WORK_DIR}/${NDK_VER}' + '/toolchains/llvm/prebuilt/linux-x86_64/sysroot']
+cpp_args = ['-target', 'aarch64-linux-android${SDK_VER}', '--sysroot=' + '${WORK_DIR}/${NDK_VER}' + '/toolchains/llvm/prebuilt/linux-x86_64/sysroot']
