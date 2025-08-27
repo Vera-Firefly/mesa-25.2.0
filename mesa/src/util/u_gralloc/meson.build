@@ -44,7 +44,7 @@ _libmesa_u_gralloc = static_library(
   override_options : options_for_u_gralloc,
   gnu_symbol_visibility : 'hidden',
   build_by_default : false,
-  dependencies: deps_for_u_gralloc,
+  dependencies: deps_for_u_gralloc + [dependency('glesv2'), dependency('egl')],
 )
 
 idep_u_gralloc = declare_dependency(link_with: _libmesa_u_gralloc)
