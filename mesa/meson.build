@@ -1834,6 +1834,7 @@ else
   dep_llvmspirvlib = null_dep
 endif
 
+if with_clc
 dep_spirv_tools = dependency(
   'SPIRV-Tools',
   required : with_clc,
@@ -1841,6 +1842,7 @@ dep_spirv_tools = dependency(
 )
 if dep_spirv_tools.found()
   pre_args += '-DHAVE_SPIRV_TOOLS'
+endif
 endif
 
 dep_clang = null_dep
