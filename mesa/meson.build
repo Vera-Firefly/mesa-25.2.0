@@ -264,6 +264,7 @@ elif _vulkan_drivers.contains('all')
 endif
 
 with_intel_vk = _vulkan_drivers.contains('intel')
+# with_intel_vk = false
 with_intel_hasvk = _vulkan_drivers.contains('intel_hasvk')
 with_amd_vk = _vulkan_drivers.contains('amd')
 with_freedreno_vk = _vulkan_drivers.contains('freedreno')
@@ -808,7 +809,7 @@ with_driver_using_cl = [
 ].contains(true)
 
 if get_option('mesa-clc') == 'system'
-  prog_mesa_clc = false
+  prog_mesa_clc = true
   prog_vtn_bindgen2 = find_program('vtn_bindgen2', native : true)
   # Even with mesa-clc already built, rusticl still needs clc.
   with_clc = false
