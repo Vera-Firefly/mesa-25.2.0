@@ -133,7 +133,7 @@ if get_option('mesa-clc') != 'system' and (with_driver_using_cl or \
     # If we can run host binaries directly, just build mesa_clc for the host.
     # Most commonly this happens when doing a cross compile from an x86_64 build
     # machine to an x86 host
-    native : not meson.can_run_host_binaries(),
+    native : false,
     install : get_option('install-mesa-clc'),
   )
 endif
