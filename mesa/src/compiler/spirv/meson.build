@@ -78,7 +78,7 @@ spirv2nir = executable(
   install : with_tools.contains('nir'),
 )
 
-if get_option('mesa-clc') != 'system'
+if get_option('mesa-clc') == 'system'
    prog_vtn_bindgen2 = executable(
      'vtn_bindgen2',
      ['vtn_bindgen2.c'],
@@ -88,7 +88,7 @@ if get_option('mesa-clc') != 'system'
      # If we can run host binaries directly, just build vtn_bindgen for the host.
      # Most commonly this happens when doing a cross compile from an x86_64 build
      # machine to an x86 host
-     native : true,
+     native : false,
      install : true,
    )
 endif
