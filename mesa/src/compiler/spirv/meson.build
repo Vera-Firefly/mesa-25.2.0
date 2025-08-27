@@ -91,7 +91,7 @@ if get_option('mesa-clc') != 'system' and (with_driver_using_cl or \
      # Most commonly this happens when doing a cross compile from an x86_64 build
      # machine to an x86 host
      native : false,
-     install : get_option('install-mesa-clc'),
+     install : true,
    )
 endif
 
