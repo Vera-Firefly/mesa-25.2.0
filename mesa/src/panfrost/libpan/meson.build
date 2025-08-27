@@ -32,7 +32,8 @@ foreach ver : ['4', '5', '6', '7', '9', '10', '12', '13']
   libpan_nir_cur_ver = custom_target(
     input : libpan_spv,
     output : ['libpan_v' + ver + '.cpp', 'libpan_v' + ver + '.h'],
-    command : [prog_vtn_bindgen2, libpan_spv, '@OUTPUT@'],
+    command : [# prog_vtn_bindgen2, 
+    libpan_spv, '@OUTPUT@'],
   )
 
   libpan_shaders_cur_ver = custom_target(

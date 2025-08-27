@@ -61,7 +61,8 @@ foreach gen : intel_shaders_gens
     input : intel_shaders_spv,
     output : ['intel_gfx@0@_shaders_binding.cpp'.format(gen[0]),
               'intel_gfx@0@_shaders_binding.h'.format(gen[0])],
-    command : [prog_vtn_bindgen2, intel_shaders_spv, '@OUTPUT0@', '@OUTPUT1@'],
+    command : [# prog_vtn_bindgen2, 
+    intel_shaders_spv, '@OUTPUT0@', '@OUTPUT1@'],
   )
 
   intel_shaders += _intel_shaders
