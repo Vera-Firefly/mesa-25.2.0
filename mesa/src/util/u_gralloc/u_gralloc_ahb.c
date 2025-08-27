@@ -1,4 +1,4 @@
-#include "mesa_stub_ahb.h"
+#include "u_gralloc_ahb.h"
 #include "util/log.h"
 #include "util/u_memory.h"
 #include <stdlib.h>
