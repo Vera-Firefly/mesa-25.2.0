@@ -42,7 +42,7 @@ foreach gen : intel_shaders_gens
     input : intel_shader_files,
     output : 'intel_gfx@0@_shaders.spv'.format(gen[0]),
     command : [
-      prog_mesa_clc,
+      # prog_mesa_clc,
       intel_shader_files, '-o', '@OUTPUT@', '--depfile', '@DEPFILE@', '--',
       '-DGFX_VERx10=@0@'.format(gen[0]),
       '-I' + join_paths(meson.current_source_dir(), '.'),
