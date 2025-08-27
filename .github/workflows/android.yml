@@ -67,21 +67,17 @@ jobs:
             -Dandroid-stub=true \
             -Dandroid-libbacktrace=disabled \
             -Dandroid-strict=false \
+            -Dprecomp-compiler=system \
             -Degl=enabled \
             -Dgles1=enabled \
             -Dgles2=enabled \
-            # -Dshared-glapi=enabled \
             -Dxlib-lease=disabled \
             -Dgbm=disabled \
             -Dglx=disabled \
             -Dllvm=disabled \
             -Dopengl=true \
-            -Dprecomp-compiler=system \
-            # -Dosmesa=true \
             -Dvulkan-drivers= \
-            # -Dtools=drm-shim \
             -Dgallium-drivers=zink \
-            # -Dfreedreno-kmds=kgsl,msm \
             -Dbuildtype=release
           ninja -C "build-android" install
           # mkdir /tmp/mesa/output
