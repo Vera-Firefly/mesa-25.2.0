@@ -6,7 +6,7 @@
  */
 
 #include "u_gralloc_internal.h"
-#include "u_gralloc_stub.h"
+#include "u_gralloc_ahb.h"
 
 #include <assert.h>
 #include <errno.h>
@@ -26,7 +26,7 @@ static const struct u_grallocs {
 } u_grallocs[] = {
    /* Prefer the CrOS API as it is significantly faster than IMapper4 */
    // {.type = U_GRALLOC_TYPE_CROS, .create = u_gralloc_cros_api_create},
-   {.type = U_GRALLOC_TYPE_CROS, .create = u_gralloc_stub_create},
+   {.type = U_GRALLOC_TYPE_CROS, .create = u_gralloc_ahb_create},
 #ifdef USE_IMAPPER4_METADATA_API
    {.type = U_GRALLOC_TYPE_GRALLOC4, .create = u_gralloc_imapper_api_create},
 #endif /* USE_IMAPPER4_METADATA_API */

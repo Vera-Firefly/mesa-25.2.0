@@ -15,7 +15,7 @@ files_u_gralloc = files(
   'u_gralloc_cros_api.c',
   'u_gralloc_libdrm.c',
   'u_gralloc_qcom.c',
-  'u_gralloc_stub.c',
+  'u_gralloc_ahb.c',
 )
 
 if dep_android_ui.found()
@@ -44,7 +44,7 @@ _libmesa_u_gralloc = static_library(
   override_options : options_for_u_gralloc,
   gnu_symbol_visibility : 'hidden',
   build_by_default : false,
-  dependencies: deps_for_u_gralloc + [dependency('glesv2'), dependency('egl')],
+  dependencies: deps_for_u_gralloc,
 )
 
 idep_u_gralloc = declare_dependency(link_with: _libmesa_u_gralloc)
