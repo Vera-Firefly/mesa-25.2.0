@@ -883,7 +883,7 @@ if with_platform_android
   dep_android_mapper4 = null_dep
   if not with_android_stub
     dep_android = [
-      dependency('cutils'),
+      # dependency('cutils'),
       dependency('hardware'),
       dependency('log'),
       dependency('sync'),

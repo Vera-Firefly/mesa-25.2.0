@@ -3266,7 +3266,7 @@ zink_internal_create_screen(const struct pipe_screen_config *config, int64_t dev
    u_trace_state_init();
 
    const char* preloaded_ptr = getenv("VULKAN_PTR");
-   screen->loader_lib = preloaded_ptr ? util_dl_open(VK_LIBNAME) : (void*) strtoul(preloaded_ptr, NULL, 0x10);
+   screen->loader_lib = preloaded_ptr ? (void*) strtoul(preloaded_ptr, NULL, 0x10) : util_dl_open(VK_LIBNAME);
    if (!screen->loader_lib) {
       
          mesa_loge("ZINK: failed to load "VK_LIBNAME);
