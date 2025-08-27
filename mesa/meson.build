@@ -302,6 +302,10 @@ if freedreno_kmds.length() != 0 and freedreno_kmds != [ 'msm' ] and with_freedre
   endif
 endif
 
+if freedreno_kmds.contains('kgsl')
+  pre_args += '-DHAVE_FREEDRENO_KGSL'
+endif
+
 with_vdrm = [
   with_amdgpu_virtio,
   freedreno_kmds.contains('virtio'),

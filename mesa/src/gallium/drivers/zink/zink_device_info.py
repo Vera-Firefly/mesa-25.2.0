@@ -84,7 +84,6 @@ EXTENSIONS = [
     Extension("VK_KHR_unified_image_layouts", alias="unified_layouts", features=True),
     Extension("VK_KHR_external_memory"),
     Extension("VK_KHR_external_memory_fd"),
-    Extension("VK_KHR_vulkan_memory_model"),
     Extension("VK_KHR_workgroup_memory_explicit_layout", alias="explicit_layout", features=True),
     Extension("VK_KHR_pipeline_executable_properties",
               alias="pipestats",
@@ -336,6 +335,7 @@ EXTENSIONS = [
     Extension("VK_KHR_shader_float_controls",
               alias="float_controls"),
     Extension("VK_KHR_format_feature_flags2"),
+    Extension("VK_KHR_vulkan_memory_model", alias="vukan_memory_model",features=True),
 ]
 
 # constructor: Versions(device_version(major, minor, patch), struct_version(major, minor))
@@ -490,7 +490,7 @@ zink_get_physical_device_info(struct zink_screen *screen)
    // enumerate device supported extensions
    VkResult result = screen->vk.EnumerateDeviceExtensionProperties(screen->pdev, NULL, &num_extensions, NULL);
    if (result != VK_SUCCESS) {
-      if (!screen->driver_name_is_inferred)
+      
          mesa_loge("ZINK: vkEnumerateDeviceExtensionProperties failed (%s)", vk_Result_to_str(result));
    } else {
       if (num_extensions > 0) {
@@ -498,7 +498,7 @@ zink_get_physical_device_info(struct zink_screen *screen)
          if (!extensions) goto fail;
          result = screen->vk.EnumerateDeviceExtensionProperties(screen->pdev, NULL, &num_extensions, extensions);
          if (result != VK_SUCCESS) {
-            if (!screen->driver_name_is_inferred)
+            
                mesa_loge("ZINK: vkEnumerateDeviceExtensionProperties failed (%s)", vk_Result_to_str(result));
          }
 
