@@ -39,8 +39,8 @@ foreach ver : ['4', '5', '6', '7', '9', '10', '12', '13']
   libpan_shaders_cur_ver = custom_target(
     input : libpan_spv,
     output : ['libpan_shaders_v' + ver + '.h', 'libpan_shaders_v' + ver + '.c'],
-    command : [# prog_panfrost_compile, 'libpan_shaders', ver, 
-    '@INPUT0@', '@OUTPUT@'],
+    command : [],
+    # [prog_panfrost_compile, 'libpan_shaders', ver, '@INPUT0@', '@OUTPUT@'],
   )
 
   idep_libpan_cur_ver = declare_dependency(
