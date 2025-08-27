@@ -57,7 +57,6 @@ libvtn = static_library(
   gnu_symbol_visibility : 'hidden',
   dependencies : [dep_spirv_tools, idep_nir, dep_valgrind],
   build_by_default : false,
-  native : true,
 )
 
 idep_vtn = declare_dependency(
