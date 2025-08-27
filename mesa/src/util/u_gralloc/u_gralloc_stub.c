@@ -22,7 +22,7 @@ static int stub_get_front_rendering_usage(struct u_gralloc *base, uint64_t *out_
     return 0;
 }
 
-static void stub_destroy(struct u_gralloc *base) {
+static int stub_destroy(struct u_gralloc *base) {
     struct stub_gralloc *gr = (struct stub_gralloc*)base;
     if (gr->buffer) {
         if (gr->buffer->fbo) glDeleteFramebuffers(1, &gr->buffer->fbo);
@@ -30,6 +30,7 @@ static void stub_destroy(struct u_gralloc *base) {
         free(gr->buffer);
     }
     free(gr);
+    return 0;
 }
 
 struct u_gralloc *u_gralloc_stub_create(void)
@@ -59,7 +60,7 @@ struct u_gralloc *u_gralloc_stub_create(void)
                            GL_TEXTURE_2D, gr->buffer->tex, 0);
 
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-        mesa_loge("MesaStubGralloc", "FBO incomplete");
+        mesa_loge("FBO incomplete");
         stub_destroy(&gr->base);
         return NULL;
     }
@@ -68,7 +69,7 @@ struct u_gralloc *u_gralloc_stub_create(void)
     gr->base.ops.get_front_rendering_usage = stub_get_front_rendering_usage;
     gr->base.ops.destroy = stub_destroy;
 
-    mesa_logi("MesaStubGralloc", "Using stub gralloc (AHardwareBuffer replacement)");
+    mesa_logi("Using stub gralloc (AHardwareBuffer replacement)");
 
     return &gr->base;
 }
