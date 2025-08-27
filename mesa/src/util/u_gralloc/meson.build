@@ -46,4 +46,4 @@ _libmesa_u_gralloc = static_library(
   dependencies: deps_for_u_gralloc,
 )
 
-idep_u_gralloc = declare_dependency()
+idep_u_gralloc = declare_dependency(link_with: _libmesa_u_gralloc)
