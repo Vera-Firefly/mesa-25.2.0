@@ -356,7 +356,7 @@ if with_radv_tests and not with_amd_vk
   error('RADV tests require RADV')
 endif
 
-with_microsoft_clc = get_option('microsoft-clc').enabled()
+with_microsoft_clc = false
 with_spirv_to_dxil = get_option('spirv-to-dxil')
 
 if host_machine.system() == 'darwin'
@@ -796,7 +796,7 @@ if with_gallium_rusticl or with_nouveau_vk or with_tools.contains('etnaviv') or 
 endif
 
 if get_option('precomp-compiler') != 'system'
-  with_drivers_clc = get_option('precomp-compiler') == 'enabled'
+  with_drivers_clc = false
 else
   with_drivers_clc = false
 endif
@@ -804,19 +804,16 @@ endif
 with_driver_using_cl = [
   with_gallium_iris, with_intel_vk,
   with_gallium_asahi, with_asahi_vk,
-  with_gallium_panfrost, with_panfrost_vk,
   with_nouveau_vk,
 ].contains(true)
 
 if get_option('mesa-clc') == 'system'
-  prog_mesa_clc = find_program('mesa_clc', native : true)
+  prog_mesa_clc = false
   prog_vtn_bindgen2 = find_program('vtn_bindgen2', native : true)
   # Even with mesa-clc already built, rusticl still needs clc.
-  with_clc = with_gallium_rusticl
+  with_clc = false
 else
-  with_clc = get_option('mesa-clc') != 'auto' or \
-             with_microsoft_clc or with_gallium_rusticl or \
-             with_drivers_clc or with_driver_using_cl
+  with_clc = false
 endif
 
 with_llvm = with_llvm \
