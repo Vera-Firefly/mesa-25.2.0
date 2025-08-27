@@ -884,7 +884,7 @@ if with_platform_android
   if not with_android_stub
     dep_android = [
       # dependency('cutils'),
-      dependency('hardware'),
+      # dependency('hardware'),
       dependency('log'),
       dependency('sync'),
     ]
