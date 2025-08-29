@@ -188,10 +188,8 @@ typedef void *EGLImageKHR;
 #define EGL_NO_IMAGE_KHR                  EGL_CAST(EGLImageKHR,0)
 typedef EGLImageKHR (EGLAPIENTRYP PFNEGLCREATEIMAGEKHRPROC) (EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint *attrib_list);
 typedef EGLBoolean (EGLAPIENTRYP PFNEGLDESTROYIMAGEKHRPROC) (EGLDisplay dpy, EGLImageKHR image);
-#ifdef EGL_EGLEXT_PROTOTYPES
 EGLAPI EGLImageKHR EGLAPIENTRY eglCreateImageKHR (EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint *attrib_list);
 EGLAPI EGLBoolean EGLAPIENTRY eglDestroyImageKHR (EGLDisplay dpy, EGLImageKHR image);
-#endif
 #endif /* EGL_KHR_image */
 
 #ifndef EGL_KHR_image_base
@@ -516,9 +514,7 @@ EGLAPI EGLBoolean EGLAPIENTRY eglGetFrameTimestampsANDROID (EGLDisplay dpy, EGLS
 #define EGL_ANDROID_get_native_client_buffer 1
 struct AHardwareBuffer;
 typedef EGLClientBuffer (EGLAPIENTRYP PFNEGLGETNATIVECLIENTBUFFERANDROIDPROC) (const struct AHardwareBuffer *buffer);
-#ifdef EGL_EGLEXT_PROTOTYPES
 EGLAPI EGLClientBuffer EGLAPIENTRY eglGetNativeClientBufferANDROID (const struct AHardwareBuffer *buffer);
-#endif
 #endif /* EGL_ANDROID_get_native_client_buffer */
 
 #ifndef EGL_ANDROID_image_native_buffer
