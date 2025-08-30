@@ -516,7 +516,9 @@ EGLAPI EGLBoolean EGLAPIENTRY eglGetFrameTimestampsANDROID (EGLDisplay dpy, EGLS
 #define EGL_ANDROID_get_native_client_buffer 1
 struct AHardwareBuffer;
 typedef EGLClientBuffer (EGLAPIENTRYP PFNEGLGETNATIVECLIENTBUFFERANDROIDPROC) (const struct AHardwareBuffer *buffer);
+#ifdef EGL_EGLEXT_PROTOTYPES
 EGLAPI EGLClientBuffer EGLAPIENTRY eglGetNativeClientBufferANDROID (const struct AHardwareBuffer *buffer);
+#endif
 #endif /* EGL_ANDROID_get_native_client_buffer */
 
 #ifndef EGL_ANDROID_image_native_buffer
